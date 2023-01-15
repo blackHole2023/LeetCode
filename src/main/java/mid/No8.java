@@ -39,8 +39,24 @@ public class No8 {
             while (index<len){
                 char currChar = charArray[index];
                 //判断合法情况
-                if ()
+                if (currChar>'9'||currChar<'0'){
+                    break;
+                }
+                //判断越界
+                if (res>Integer.MAX_VALUE/10||(res==Integer.MAX_VALUE/10&&(currChar-'0')>Integer.MAX_VALUE%10)){
+                    return Integer.MAX_VALUE;
+                }
+                if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && (currChar - '0') > -(Integer.MIN_VALUE % 10))) {
+                    return Integer.MIN_VALUE;
+                }
+
+                //合法才转换
+                res = res*10+sign*(currChar-'0');
+
+                index++;
+
             }
+            return res;
 
         }
     }
